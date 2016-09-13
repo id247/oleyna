@@ -1,0 +1,23 @@
+
+	</div> <!-- end .container -->
+
+	@@include("../common/modals.html", {})
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+
+	<!-- main script -->
+	@@if (server === "dnevnik"){
+	<script src="assets/js/dnevnik.min.js"></script>
+	}	
+	@@if (server === "mosreg"){
+	<script src="assets/js/mosreg.min.js"></script>
+	}
+	@@if (server === "staging"){
+	<script src="assets/js/staging.min.js"></script>
+	}
+	@@if (server === "local"){
+	<script src="assets/js/local.min.js"></script>
+	}
+
+</body>
+</html>
