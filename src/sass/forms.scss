@@ -38,11 +38,36 @@
 		}
 	}
 
+	&--transparent-white{
+		background: transparent;
+		border: 3px solid #fff;
+		color: #fff;
+		&:hover{
+			background: #fff;
+			color: $text;
+		}
+		&:active{
+			background: #fff;
+			color: $text;
+		}
+	}
+
+	&--yellow{
+		background: $yellow;
+		color: $text;
+		font-family: $ph;
+		&:hover{
+			background: lighten($yellow, 5%);
+		}
+		&:active{
+			background: darken($yellow, 5%);
+		}
+	}
+
 	&--m{
-		border-radius: 8px;
-		font-weight: 700;
-		font-size: 12px;
-		padding: 8px 20px 8px;
+		font-size: 30px;
+		border-radius: 40px;
+		padding: 12px 20px 12px;
 	}
 
 	&--l{

@@ -46,12 +46,13 @@ sup{
 }
 
 .text{
-	font-size: 18px;
-	line-height: (26/18);
+	font-size: 16px;
+	line-height: (24/16);
 
 	h3{
-		font-size: 24px;
-		font-weight: 700;
+		font-size: 30px;
+		font-weight: 400;
+		line-height: (35/30);
 		margin: 0 0 1em;
 	}
 
@@ -74,6 +75,7 @@ sup{
 	}
 	
 	a{
+		color: #0072ff;
 		border-bottom: 1px solid;
 		transition: all .3s;
 		&:hover{
