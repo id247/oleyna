@@ -1,9 +1,12 @@
-'use strict'
+'use strict';
 
-import app from './app';
+import upload from './upload';
 
-document.addEventListener('DOMContentLoaded', () => {
+console.log('run');
 
-	app.init();
+$(function(){
+	upload.init();
+});
 
-});   
+
+

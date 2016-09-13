@@ -49,22 +49,54 @@ sup{
 	font-size: 16px;
 	line-height: (24/16);
 
-	h3{
-		font-size: 30px;
+	h1,h2,h3,
+	h4{
 		font-weight: 400;
 		line-height: (35/30);
 		margin: 0 0 1em;
+
 	}
+
+	h1{
+		font-size: 40px;
+		font-weight: 700;
+	}
+
+	h2{
+		font-size: 35px;
+	}
+
+	h3{
+		font-size: 30px;
+	}
+
 
 	b{
 		font-weight: 700;
 	}
+
 	strong{
 		font-weight: 700;
 	}
 
 	em{
 		font-style: italic;
+	}
+
+	ul{
+		margin: 0 0 1em;
+		padding: 0 0 0 20px;
+		list-style-type: disc;
+	}
+
+	ol{
+		margin: 0 0 1em;
+		padding: 0 0 0 20px;
+		list-style-type: upper-latin;
+	}
+
+	li{
+		margin: 0 0 1em;
 	}
 
 	p{

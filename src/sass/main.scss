@@ -436,6 +436,7 @@
 
 .upload{
 	padding: 40px 0 0;
+	position: relative;
 
 	&__list{
 		margin: 0 0 50px;
@@ -455,19 +456,73 @@
 	&__button{
 		width: 250px;
 	}
+
+	&__profile{
+		margin: 0 0 20px;
+		display: none;
+	}
+
+	&__loader{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		background: rgba(255,255,255,.5);
+		text-align: center;
+
+		display: none;
+	}
 }
 
+.upload-profile{
+	text-align: center;
+
+	&__name{
+		margin: 0 0 10px;
+	}
+}
+
+.loader{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+    animation-name: spin;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+
 .upload-item{
+	position: relative;
+
+	&--filled{
+		.upload-item{
+
+			&__delete{
+				display: block;
+			}
+		}
+	}
 
 	&__button{
 		position: relative;
 		width: 109px;
 		height: 115px;
-		background: transparent;
-		border: 0;
 		cursor: pointer;
-		padding: 0;
-		outline: none;
+		
 	}
 
 	&__text{
@@ -491,5 +546,25 @@
 			left: 0;
 			@include sprite($upload-frame);
 		}
+
+		img{
+			width: auto;
+			height: 100%;
+		}
+	}
+
+	&__input{
+		position: absolute;
+		left: -99999px;
+		top: 0;
+	}
+
+	&__delete{
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		font-size: 20px;
+		cursor: pointer;
+		display: none;
 	}
 }
