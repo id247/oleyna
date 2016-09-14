@@ -15,6 +15,7 @@ export default (function App(window, document, $){
 
 	function getDOM(){
 		$DOM.container = $('#upload');
+		$DOM.content = $DOM.container.find('.js-upload-content');
 		$DOM.item = $DOM.container.find('.js-upload-item');
 		
 		$DOM.sendButton = $DOM.container.find('.js-upload-send-button');
@@ -117,7 +118,8 @@ export default (function App(window, document, $){
 		.then( res => {
 			asyncEnd();
 			console.log(res);
-			$DOM.result.html('Файлы успешно отпубликованы!');
+			$DOM.content.hide();
+			$DOM.result.html('Файлы успешно опубликованы!');
 		})
 		.catch( err => {
 			asyncEnd();

@@ -24,12 +24,16 @@
 
 		</header> <!-- /.header -->
 
+		@@if (activeTab !== "teachers"){
+
 		@@include("../common/tabs.html", {
 			"activeTab": "@@activeTab"
 		})
 
+		}
+
 		
-		<section class="container__section section section--tabbed competition" id="competition">
+		<section class="container__section section @@if (activeTab !== "teachers"){ section--tabbed } competition" id="competition">
 
 			<div class="section__image section__image--caviar"></div><!-- /.section__salad -->
 			
@@ -100,8 +104,8 @@
 						<li class="recipes__item recipes-item recipes-item--1">
 							
 							<h3 class="recipes-item__title">
-								Кабачковая  <br>
-								икра
+								Салат<br>
+								из огурцов
 							</h3><!-- /.recipes-item__title -->
 
 							<div class="recipes-item__ing">
@@ -111,15 +115,15 @@
 							<ul class="recipes-item__list">
 								
 								<li class="recipes-item__item">
-									Кабачки — 3 кг
+									Огурцы — 2 кг
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
-									«Олейна» — 300 г
+									«Олейна» — 100 г
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
-									Лук — 0,5 кг
+									Уксус — 100 мл
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
@@ -130,7 +134,7 @@
 
 							<div class="recipes-item__button-placeholder">
 								
-								<a href="oleyna-recipe-aquash-caviar.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+								<a href="oleyna-recipe-cucumbers.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
 
 							</div><!-- /.recipes-item__button-placeholder -->
 							
@@ -139,8 +143,8 @@
 						<li class="recipes__item recipes-item recipes-item--2">
 							
 							<h3 class="recipes-item__title">
-								Свекольный <br>
-								салат
+								Пикантные<br>
+								кабачки
 							</h3><!-- /.recipes-item__title -->
 
 							<div class="recipes-item__ing">
@@ -150,15 +154,15 @@
 							<ul class="recipes-item__list">
 								
 								<li class="recipes-item__item">
-									Свекла — 1,5 кг
+									Кабачки — 2 кг
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
-									«Олейна» — 0,5 стакана
+									«Олейна» — 1 стакан
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
-									Лук — 2 шт
+									Лук — 3-4 шт
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
@@ -169,7 +173,7 @@
 
 							<div class="recipes-item__button-placeholder">
 								
-								<a href="oleyna-recipe-aurora.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+								<a href="oleyna-recipe-spicy-zucchini.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
 
 							</div><!-- /.recipes-item__button-placeholder -->
 							
@@ -178,8 +182,7 @@
 						<li class="recipes__item recipes-item recipes-item--3">
 							
 							<h3 class="recipes-item__title">
-								Заправка 
-								для&nbsp;борща
+								Маринованные шампиньоны
 							</h3><!-- /.recipes-item__title -->
 
 							<div class="recipes-item__ing">
@@ -189,15 +192,15 @@
 							<ul class="recipes-item__list">
 								
 								<li class="recipes-item__item">
-									Томаты  — 1,5 кг
+									Шампиньоны  — 0,5 кг
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
-									«Олейна» — 300 г
+									«Олейна» — 2 ст. л.
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
-									Свекла — 1,5 кг
+									Винный уксус — 2 ст. л.
 								</li> <!-- /.recipes-item__item -->
 								
 								<li class="recipes-item__item">
@@ -208,7 +211,7 @@
 
 							<div class="recipes-item__button-placeholder">
 								
-								<a href="oleyna-recipe-borch.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+								<a href="oleyna-recipe-champignons.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
 
 							</div><!-- /.recipes-item__button-placeholder -->
 							
@@ -473,7 +476,7 @@
 					</p>
 
 					}
-					
+
 					@@if (activeTab === "advanced"){
 
 					<p>	
@@ -485,40 +488,56 @@
 					@@if (activeTab === "teachers"){
 
 					<p>
-						Готовы поделиться результатом классного творчества? Присылайте фотографии Ваших заготовок, приготовленных по одному из наших рецептов, на конкурс «Классные заготовки».
+						Готовы поделиться результатом классного творчества? 
 					</p>
 
-					}
-
-				</div><!-- /.section__text -->				
-
-				<div class="about-competition__rules-placeholder">
+					<p>
+						Чтобы принять участие в конкурсе «Классные заготовки», Вам необходимо:
+					</p>
 					
-					@@if (activeTab === "new"){
-					<a href="oleyna-competition-results.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
-					}
-					
-					@@if (activeTab === "advanced"){
-					<a href="oleyna-competition-results-advanced.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
-					}
-					
-					@@if (activeTab === "teachers"){
-					<a href="oleyna-competition-results-teachers.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
-					}
+					<ol>
+						<li>
+							Сделать фотографии урока технологии и Ваших заготовок.
+						</li>
+						<li>
+							<a href="#">Скачать шаблон стенгазеты</a>.
+						</li>
+						<li>
+							Добавить в шаблон фотографии и текст.
+						</li>
+						<li>
+							Отправить стенгазету нам на конкурс! 
+						</li>							
+					</ol>
 
-				</div><!-- /.about-competition__rules-placeholder -->
 	
-				<div class="section__text competition__text text">
+					<p>
+						Ждём Ваших шедевров!
+					</p>
+					
+					}
 
-					<h3>
-						Принять участие:
-					</h3>
-
-				</div><!-- /.section__text -->
+				</div><!-- /.section__text -->	
 
 				@@include("../common/upload.html", {
 					"activeTab": "@@activeTab"
 				})
+
+				<div class="competition__works">
+					
+					@@if (activeTab === "new"){
+					<a href="oleyna-competition-results.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы участников &rarr;</a>
+					}
+					
+					@@if (activeTab === "advanced"){
+					<a href="oleyna-competition-results-advanced.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы участников &rarr;</a>
+					}
+					
+					@@if (activeTab === "teachers"){
+					<a href="oleyna-competition-results-teachers.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы  участников &rarr;</a>
+					}
+
+				</div><!-- /.about-competition__rules-placeholder -->
 			
 			</div> <!-- /.competition__wrap -->
 		

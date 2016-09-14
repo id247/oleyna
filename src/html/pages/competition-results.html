@@ -24,11 +24,16 @@
 
 		</header> <!-- /.header -->
 
+
+		@@if (activeTab !== "teachers"){
+
 		@@include("../common/tabs2.html", {
 			"activeTab": "@@activeTab"
 		})
 
-		<section class="container__section section section--tabbed user-resipes" id="user-resipes">
+		}
+
+		<section class="container__section section @@if (activeTab !== "teachers"){ section--tabbed } user-resipes" id="user-resipes">
 			
 			<div class="section__wrap home__wrap">
 

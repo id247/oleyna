@@ -101,7 +101,7 @@
 		position: relative;
 
 		&--pb{
-			padding-bottom: 120px;
+			padding-bottom: 160px;
 		}
 	}
 
@@ -303,41 +303,27 @@
 	}
 
 	&__rules-placeholder{
-		margin: 0 0 20px;
-		padding: 20px 0;
-		text-align: center;
-
-		&:before,
-		&:after{
-			content: '';
-			display: inline-block;
-			vertical-align: middle;
-			margin: 0 0px;
-		}
-
-		&:before{
-			@include sprite($yellow-sparks-left);
-		}
-
-		&:after{
-			@include sprite($yellow-sparks-right);			
-		}
+		text-align: right;
 	}
 
 	&__rules{
-		vertical-align: middle;
 	}
 
 	&__buttons{
 		text-align: center;
+		margin: 0 0 60px;
+	}
+
+	&__button-placeholder{
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 20px;
 	}
 
 	&__button{
-		margin: 0 30px;
 		padding: 0px 50px 0px 33px;
 		height: 55px;
 		line-height: 55px;
-		vertical-align: middle;
 
 		&:before{
 			content: '';
@@ -360,6 +346,24 @@
 	}
 }
 
+.button-sparks{
+	&:before,
+	&:after{
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0px;
+	}
+
+	&:before{
+		@include sprite($yellow-sparks-left);
+	}
+
+	&:after{
+		@include sprite($yellow-sparks-right);			
+	}
+}
+
 /* ==========================================================================
  * competition
  * ========================================================================== */
@@ -368,6 +372,14 @@
 
 	&__recipes{
 		padding: 40px 0; 
+	}
+
+	&__upload{
+		margin: 0 0 50px;
+	}
+
+	&__works{
+		text-align: center;
 	}
 }
  
@@ -444,9 +456,25 @@
 .upload{
 	position: relative;
 
+	&__top{
+		@include clearfix;
+		margin: 0 0 20px;
+	}
+
 	&__title{
+		width: 50%;
+		font-size: 30px;
+		margin: 0 0 14px;
+	}
+
+	&__profile{
+		float: right;
+		text-align: right;
+	}
+
+	&__desc{
 		margin: 0 0 15px;
-		text-align: center;
+		//text-align: center;
 	}
 
 	&__list{
@@ -493,7 +521,10 @@
 }
 
 .profile{
-	text-align: left;
+
+	padding: 10px;
+	background: #fff9ce;
+	border-radius: 10px;
 
 	&__profile{	
 		display: none;
@@ -538,6 +569,39 @@
 
 			&__delete{
 				display: block;
+			}
+		}
+	}
+
+	&--teachers{
+
+		.upload-item{
+
+			&__button{
+				width: 300px;
+				height: 150px;
+			}
+
+			&__image-placeholder{
+				border: 2px solid $text;
+				border-radius: 10px;
+				height: 150px;
+				&:after{
+					display: none;
+				}
+
+				img{
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			&__text{
+				top: 65px;
+			}
+			&__delete{
+				top: -15px;
+				right: -15px;
 			}
 		}
 	}
