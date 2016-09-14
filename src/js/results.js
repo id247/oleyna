@@ -14,6 +14,7 @@ export default (function App(window, document, $){
 	let $DOM = {};
 	let profile = false;
 	let pageNumber = 1;
+	let pageSize = 5;
 
 
 	function getDOM(){
@@ -68,11 +69,21 @@ export default (function App(window, document, $){
 
 			let value;
 
+			let deleteButton = '';
+
+			if (profile.roles.indexOf('System') > -1){
+				deleteButton = (`
+					<div class="user-resipes-item__admin">
+						<a href="#${key.Key}" class="link js-delete">Удалить</a>
+					</div>
+				`);
+			}
+
 			try{
 				value = JSON.parse(decodeURIComponent( key.Value ));
 			}catch(e){
 				console.error(e);
-				return oldHtml + '';
+				return oldHtml + deleteButton;
 			}
 
 			if (value.files.length === 0){
@@ -96,15 +107,6 @@ export default (function App(window, document, $){
 
 			const profileLink = domain + '/user/user.aspx?user=' + value.user.id_str;
 
-			let deleteButton = '';
-
-			if (profile.roles.indexOf('System') > -1){
-				deleteButton = (`
-					<div class="user-resipes-item__admin">
-						<a href="#${key.Key}" class="link js-delete">Удалить</a>
-					</div>
-				`);
-			}
 
 			const files = value.files.reduce( (oldHtml, file) => {
 				return oldHtml + (`
@@ -142,7 +144,11 @@ export default (function App(window, document, $){
 
 	function renderPagination(paging){
 
-		const pagesCount = Math.ceil(paging.count / 2);
+		const pagesCount = Math.ceil(paging.count / pageSize);
+		console.log(paging.count);
+		console.log(pageSize);
+		console.log(pagesCount);
+
 		if (pagesCount === 1){
 			return;
 		}
@@ -189,7 +195,7 @@ export default (function App(window, document, $){
 		}
 
 		asyncStart();
-		API.getKeysFromDBdesc(label, pageNumber)
+		API.getKeysFromDBdesc(label, pageNumber, pageSize)
 		.then( keys => {
 			asyncEnd();
 

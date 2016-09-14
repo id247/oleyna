@@ -189,7 +189,7 @@
 
 		&--big{
 			@include sprite($sticker-2);
-			padding: 40px 0 0;
+			padding: 47px 0 0;
 			font-size: 80px;
 		}
 
@@ -442,8 +442,12 @@
  * ========================================================================== */
 
 .upload{
-	padding: 40px 0 0;
 	position: relative;
+
+	&__title{
+		margin: 0 0 15px;
+		text-align: center;
+	}
 
 	&__list{
 		margin: 0 0 50px;
@@ -489,14 +493,19 @@
 }
 
 .profile{
-	text-align: center;
+	text-align: left;
 
 	&__profile{	
 		display: none;
 	}
 
 	&__name{
-		margin: 0 0 10px;
+		margin: 0 0 10px 0;
+	}
+
+	&__button{
+		padding: 4px 10px;
+		font-size: 16px;
 	}
 }
 

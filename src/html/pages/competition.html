@@ -37,6 +37,8 @@
 	
 				<div class="section__text competition__text text">
 
+					@@if (activeTab === "new"){ 
+
 					<h3>
 						Как делать домашние заготовки?
 					</h3>
@@ -50,14 +52,290 @@
 					</p>
 
 					<p>
-						<a href="oleyna-how-to.html">Читать статью</a>
+						<a href="oleyna-article-how-to.html">Читать статью</a>
 					</p>
+
+					}
+
+					@@if (activeTab === "advanced"){ 
+
+					<h3>
+						Идеальная заготовка: 20 хитростей для опытной хозяйки
+					</h3>
+					
+					<p>						
+						Даже если Вы уже не новичок в науке домашнего консервирования, никогда не поздно узнать что-то новое и до блеска отточить мастерство. Вот основные кулинарные хитрости, которыми пользуются самые искусные повара при создании шедевров консервирования. Может, Вам тоже есть чем поделиться?
+					</p>
+
+					<p>
+						<a href="oleyna-article-lifehacks.html">Читать статью</a>
+					</p>
+
+					}
+
+					@@if (activeTab === "teachers"){ 
+
+					<h3>
+						Чем разнообразить урок технологии на тему консервирования?
+					</h3>
+					
+					<p>						
+						Привить девочкам любовь к кулинарии и научить их готовить полезную и здоровую пищу — одна из основных задач учителя технологии. Когда люди впервые попробовали сохранить свежие продукты? Что считается отдалённым предком консервированных продуктов? Как правильно выбирать продукты для заготовок? Какие секреты консервирования должна знать будущая хозяйка? Читайте об этом в нашей статье или сразу приступайте к делу! Выбирайте рецепт для приготовления на уроке, а результат совместного классного творчества присылайте нам на конкурс!
+					</p>
+
+					<p>
+						<a href="oleyna-article-secrets.html">Читать статью</a>
+					</p>
+
+					}
 
 				</div><!-- /.section__text -->
 
 				<div class="competition__recipes recipes">
 
 					<ul class="recipes__list">
+
+						@@if (activeTab === "new"){ 
+						
+						<li class="recipes__item recipes-item recipes-item--1">
+							
+							<h3 class="recipes-item__title">
+								Кабачковая  <br>
+								икра
+							</h3><!-- /.recipes-item__title -->
+
+							<div class="recipes-item__ing">
+								Ингредиенты: 
+							</div><!-- /.recipes-item__ing -->
+
+							<ul class="recipes-item__list">
+								
+								<li class="recipes-item__item">
+									Кабачки — 3 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									«Олейна» — 300 г
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									Лук — 0,5 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									…
+								</li> <!-- /.recipes-item__item -->
+							
+							</ul> <!-- /.recipes-item__list -->
+
+							<div class="recipes-item__button-placeholder">
+								
+								<a href="oleyna-recipe-aquash-caviar.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+
+							</div><!-- /.recipes-item__button-placeholder -->
+							
+						</li> <!-- /.recipes__item -->
+						
+						<li class="recipes__item recipes-item recipes-item--2">
+							
+							<h3 class="recipes-item__title">
+								Свекольный <br>
+								салат
+							</h3><!-- /.recipes-item__title -->
+
+							<div class="recipes-item__ing">
+								Ингредиенты: 
+							</div><!-- /.recipes-item__ing -->
+
+							<ul class="recipes-item__list">
+								
+								<li class="recipes-item__item">
+									Свекла — 1,5 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									«Олейна» — 0,5 стакана
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									Лук — 2 шт
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									…
+								</li> <!-- /.recipes-item__item -->
+							
+							</ul> <!-- /.recipes-item__list -->
+
+							<div class="recipes-item__button-placeholder">
+								
+								<a href="oleyna-recipe-aurora.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+
+							</div><!-- /.recipes-item__button-placeholder -->
+							
+						</li> <!-- /.recipes__item -->
+						
+						<li class="recipes__item recipes-item recipes-item--3">
+							
+							<h3 class="recipes-item__title">
+								Заправка 
+								для&nbsp;борща
+							</h3><!-- /.recipes-item__title -->
+
+							<div class="recipes-item__ing">
+								Ингредиенты: 
+							</div><!-- /.recipes-item__ing -->
+
+							<ul class="recipes-item__list">
+								
+								<li class="recipes-item__item">
+									Томаты  — 1,5 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									«Олейна» — 300 г
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									Свекла — 1,5 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									…
+								</li> <!-- /.recipes-item__item -->
+							
+							</ul> <!-- /.recipes-item__list -->
+
+							<div class="recipes-item__button-placeholder">
+								
+								<a href="oleyna-recipe-borch.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+
+							</div><!-- /.recipes-item__button-placeholder -->
+							
+						</li> <!-- /.recipes__item -->
+
+						}
+
+						@@if (activeTab === "advanced"){ 
+						
+						<li class="recipes__item recipes-item recipes-item--1">
+							
+							<h3 class="recipes-item__title">
+								Фаршированные кабачки
+							</h3><!-- /.recipes-item__title -->
+
+							<div class="recipes-item__ing">
+								Ингредиенты: 
+							</div><!-- /.recipes-item__ing -->
+
+							<ul class="recipes-item__list">
+								
+								<li class="recipes-item__item">
+									Кабачки — 1 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									«Олейна» — 150 г
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									Помидоры— 600 г
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									…
+								</li> <!-- /.recipes-item__item -->
+							
+							</ul> <!-- /.recipes-item__list -->
+
+							<div class="recipes-item__button-placeholder">
+								
+								<a href="oleyna-recipe-zucchini.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+
+							</div><!-- /.recipes-item__button-placeholder -->
+							
+						</li> <!-- /.recipes__item -->
+						
+						<li class="recipes__item recipes-item recipes-item--2">
+							
+							<h3 class="recipes-item__title">
+								Морковь <br> 
+								с&nbsp;овощами
+							</h3><!-- /.recipes-item__title -->
+
+							<div class="recipes-item__ing">
+								Ингредиенты: 
+							</div><!-- /.recipes-item__ing -->
+
+							<ul class="recipes-item__list">
+								
+								<li class="recipes-item__item">
+									Морковь — 5 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									«Олейна» — 500 г
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									Капуста — 3 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									…
+								</li> <!-- /.recipes-item__item -->
+							
+							</ul> <!-- /.recipes-item__list -->
+
+							<div class="recipes-item__button-placeholder">
+								
+								<a href="oleyna-recipe-carrot.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+
+							</div><!-- /.recipes-item__button-placeholder -->
+							
+						</li> <!-- /.recipes__item -->
+						
+						<li class="recipes__item recipes-item recipes-item--3">
+							
+							<h3 class="recipes-item__title">
+								Салат из&nbsp;лука с&nbsp;рисом
+							</h3><!-- /.recipes-item__title -->
+
+							<div class="recipes-item__ing">
+								Ингредиенты: 
+							</div><!-- /.recipes-item__ing -->
+
+							<ul class="recipes-item__list">
+								
+								<li class="recipes-item__item">
+									Репчатый лук — 2 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									«Олейна» — 1 л
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									Морковь — 2 кг
+								</li> <!-- /.recipes-item__item -->
+								
+								<li class="recipes-item__item">
+									…
+								</li> <!-- /.recipes-item__item -->
+							
+							</ul> <!-- /.recipes-item__list -->
+
+							<div class="recipes-item__button-placeholder">
+								
+								<a href="oleyna-recipe-onion.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+
+							</div><!-- /.recipes-item__button-placeholder -->
+							
+						</li> <!-- /.recipes__item -->
+
+						}
+
+						@@if (activeTab === "teachers"){ 
 						
 						<li class="recipes__item recipes-item recipes-item--1">
 							
@@ -92,7 +370,7 @@
 
 							<div class="recipes-item__button-placeholder">
 								
-								<a href="#" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+								<a href="oleyna-recipe-chilly-cucumbers.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
 
 							</div><!-- /.recipes-item__button-placeholder -->
 							
@@ -131,7 +409,7 @@
 
 							<div class="recipes-item__button-placeholder">
 								
-								<a href="#" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+								<a href="oleyna-recipe-rice-salad.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
 
 							</div><!-- /.recipes-item__button-placeholder -->
 							
@@ -170,25 +448,47 @@
 
 							<div class="recipes-item__button-placeholder">
 								
-								<a href="#" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
+								<a href="oleyna-recipe-adjika.html" class="recipes-item__button button button--transparent-white">посмотреть рецепт</a>
 
 							</div><!-- /.recipes-item__button-placeholder -->
 							
 						</li> <!-- /.recipes__item -->
+
+						}
 					
 					</ul> <!-- /.recipes__list -->
 					
 				</div><!-- /.competition__recipes -->
 	
 				<div class="section__text competition__text text">
-
+		
 					<h3>
 						Конкурс
 					</h3>
 					
+					@@if (activeTab === "new"){
+
 					<p>	
 						Поздравляем! Теперь, когда Вы создали Ваш первый шедевр консервирования, поделитесь с нами результатом и выиграйте призы! Присылайте фотографию блюда, приготовленного по одному из наших рецептов, и не забудьте, что на фото должно быть отражено выполнение двух обязательных условий конкурса: использование масла «<strong>Олейна</strong>» при консервировании и участие других членов Вашей семьи в создании заготовки.
 					</p>
+
+					}
+					
+					@@if (activeTab === "advanced"){
+
+					<p>	
+						Поздравляем! Теперь, когда Вы создали Ваш первый шедевр консервирования, поделитесь с нами результатом и выиграйте призы! Присылайте фотографию блюда, приготовленного по одному из наших рецептов, и не забудьте, что на фото должно быть отражено выполнение двух обязательных условий конкурса: использование масла «<strong>Олейна</strong>» при консервировании и участие других членов Вашей семьи в создании заготовки.
+					</p>
+
+					}
+		
+					@@if (activeTab === "teachers"){
+
+					<p>
+						Готовы поделиться результатом классного творчества? Присылайте фотографии Ваших заготовок, приготовленных по одному из наших рецептов, на конкурс «Классные заготовки».
+					</p>
+
+					}
 
 				</div><!-- /.section__text -->				
 
@@ -200,6 +500,10 @@
 					
 					@@if (activeTab === "advanced"){
 					<a href="oleyna-competition-results-advanced.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
+					}
+					
+					@@if (activeTab === "teachers"){
+					<a href="oleyna-competition-results-teachers.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
 					}
 
 				</div><!-- /.about-competition__rules-placeholder -->

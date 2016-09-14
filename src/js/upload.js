@@ -117,7 +117,7 @@ export default (function App(window, document, $){
 		.then( res => {
 			asyncEnd();
 			console.log(res);
-			$DOM.result.html('Файлы успешно отправлены!');
+			$DOM.result.html('Файлы успешно отпубликованы!');
 		})
 		.catch( err => {
 			asyncEnd();
