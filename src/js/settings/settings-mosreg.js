@@ -4,6 +4,7 @@ export const OAuthOptions = {
 	scope: 'Roles,Schools,FullName',	
 	clientId: '38051f332e5f42b59303cede01360c53',
 	redirectUrl: 'https://ad.school.mosreg.ru/promo/oauth2',
+	provider: 'oleynaMosreg',
 }
 
 export const APIoptions = {	

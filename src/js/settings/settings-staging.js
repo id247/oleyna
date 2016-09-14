@@ -28,7 +28,7 @@ export const OAuthOptions = {
 	scope: 'Avatar,FullName,Birthday,Age,Roles,Files,Sex',	
 	clientId: 'f84accc763e34b5b83469c9ef1a9ea62',
 	redirectUrl: 'https://ad.dnevnik.ru/promo/oauth2',
-	redirectUrlMobile: 'https://ad.dnevnik.ru/promo/hidden-forum',
+	provider: 'oleynaStaging',
 }
 
 export const APIoptions = {	

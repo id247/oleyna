@@ -4,6 +4,7 @@ export const OAuthOptions = {
 	scope: 'Roles,Schools,FullName',	
 	clientId: '963bc5cefff644d3a9d3eb51e045341c',
 	redirectUrl: 'https://ad.dnevnik.ru/promo/oauth2',
+	provider: 'oleynaDnevnik',
 }
 
 export const APIoptions = {	

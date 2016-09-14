@@ -120,7 +120,7 @@ const config = {
 		},
 		plugins: [  
 			plugins.env,
-			plugins.uglifyJs,
+			//plugins.uglifyJs,
 		]
 	}
 };
