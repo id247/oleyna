@@ -535,8 +535,8 @@
 	}
 
 	&__button{
-		padding: 4px 10px;
-		font-size: 16px;
+		//padding: 4px 10px;
+		//font-size: 16px;
 	}
 }
 
@@ -664,9 +664,16 @@
 
 .user-resipes{
 	position: relative;
+	padding-top: 20px;
+
+	&__profile-placeholder{
+		@include clearfix;
+		text-align: center;
+		margin: 0 0 20px;
+	}
 
 	&__profile{
-		margin: 0 0 20px;
+		display: inline-block;
 	}
 
 	&__list{

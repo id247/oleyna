@@ -155,7 +155,7 @@ export default (function App(window, document, $){
 
 		let html = '';
 
-		for (let i = 1; i < pagesCount ; i++){
+		for (let i = 1; i <= pagesCount ; i++){
 			html += (`
 				<div class="pagination__item">
 					<a href="#${i}" class="js-pagination-href pagination__href ${(i === pageNumber ? 'pagination__href--active' : 'link')}">${i}</a>
