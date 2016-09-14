@@ -2,47 +2,51 @@
 
 import API from './api/api';
 import OAuth from './api/hello';
-//import Cookies from 'js-cookie';
+import catchError from './common/catchError';
 import { PromoOptions } from 'appSettings';
 
 export default (function App(window, document, $){
 
-	const $upload = $('#upload');
-	const $uploadItem = $upload.find('.js-upload-item');
-	
-	const $uploadSendButton = $upload.find('.js-upload-send-button');
-
-
-	const $profile = $upload.find('.js-upload-profile');
-	const $name = $upload.find('.js-upload-name');
-	const $logout = $upload.find('.js-upload-logout');
-	const $result = $upload.find('.js-upload-result');
-	const $loader = $upload.find('.js-upload-loader');
-	
-
+	let $DOM = {};
+	let label = 'all';
 	let profile = false;
 	let files = [];
+
+	function getDOM(){
+
+
+		$DOM.container = $('#upload');
+		$DOM.item = $DOM.container.find('.js-upload-item');
+		
+		$DOM.sendButton = $DOM.container.find('.js-upload-send-button');
+
+		$DOM.profile 	= $DOM.container.find('.js-upload-profile');
+		$DOM.name 		= $DOM.container.find('.js-upload-name');
+		$DOM.logout 	= $DOM.container.find('.js-upload-logout');
+		$DOM.result 	= $DOM.container.find('.js-upload-result');
+		$DOM.loader 	= $DOM.container.find('.js-upload-loader');
+	
+
+	}
 
 
 	function asyncStart(){
 		console.log('go');
-		$loader.show();
+		$DOM.loader.show();
 	}
 
 	function asyncEnd(){
 		console.log('end');
-		$loader.hide();
+		$DOM.loader.hide();
 	}
 
 	function buttonHide(message){
 		console.log(message);
-		$button.hide();
-		$result.html(message);
+		$DOM.result.html(message);
 	}
 
 	function buttonShow(){
-		$button.show();
-		$result.html('');
+		$DOM.result.html('');
 	}
 
 
@@ -74,13 +78,13 @@ export default (function App(window, document, $){
 
 
 	function showUserProfile(){
-		$name.html( profile.firstName + ' ' + profile.lastName);
-		$profile.show();
+		$DOM.name.html( profile.firstName + ' ' + profile.lastName);
+		$DOM.profile.show();
 	}
 
 	function hideUserProfile(){
-		$name.html('');
-		$profile.hide();
+		$DOM.name.html('');
+		$DOM.profile.hide();
 	}
 
 	function getUser(){
@@ -97,25 +101,86 @@ export default (function App(window, document, $){
 		})
 		.catch( err => {
 			asyncEnd();
+			$DOM.result.html(catchError(err, logout));
 			console.error(err);
 		});	
 	}
 
-	function uploadImages(){
-		files.map( file => {
-			if (!file){
-				return;
-			}
-			
-			uploadImage(file);
-		});
-	}
 	
-	function uploadImage(file){
+	function uploadImages(){
 		asyncStart();
 
+		const filePromises = files
+		.filter( file => file.fileName )
+		.map( file => {
+			return API.uploadImageToDB(file.base64, file.fileName);
+		});
+	
+
+		return Promise.all(filePromises)
+		.then( tasksIds => {
+
+			console.log(tasksIds);	
+
+			const tasksPromises = tasksIds.map( taskId => {
+				return new Promise( (resolve, reject) =>{
+					
+					const interval = setInterval( ()=> {
+						
+						API.checkUpload(taskId)
+						.then( res => {
+							console.log(res);
+
+							clearInterval(interval);
+
+							resolve(res);
+
+						})
+						.catch( err => {
+							console.log(err);
+						});
+
+					}, 2000);	
+
+
+				});
+			});
+
+			return Promise.all(tasksPromises);	
+		})
+		.then( (filesData) => {
+
+			console.log(filesData);
+
+			const value = {
+				user: profile,
+				files: filesData,
+			}
+
+			const data = {
+				label: label,
+				key: 'competition-' + new Date().getTime(),
+				value: encodeURIComponent(JSON.stringify(value)),
+				permissionLevel: 'Public',
+			}
+
+			return API.addKeyToDB(data);
+		})
+		.then( res => {
+			asyncEnd();
+			console.log(res);
+			$DOM.result.html('Файлы успешно отправлены!');
+		})
+		.catch( err => {
+			asyncEnd();
+			$DOM.result.html(catchError(err, logout));
+			console.error(err);
+		});	
+	}
+
+	function addFile(fileId, base64){
+
 		let fileName = 'fileName';
-		let base64 = file;
 
 		switch(true){
 			case (base64.indexOf('image/png') > -1):
@@ -134,64 +199,12 @@ export default (function App(window, document, $){
 				base64 = base64.replace(/data:image\/gif;base64,/, '');
 				fileName += '.gif';
 				break;
-		}		
+		}	
 
-		return API.uploadImageToDB(base64, fileName)
-		.then( taskId => {
-
-			console.log(taskId);	
-
-			const interval = setInterval( ()=> {
-				
-				API.checkUpload(taskId)
-				.then( res => {
-					console.log(res);
-
-					clearInterval(interval);
-
-					const data = {
-						label: 'files-test-1',
-						key: res.id_str,
-						value: encodeURIComponent(res),
-						permissionLevel: 'Public',
-					}
-
-					API.addKeyToDB(data)
-					.then( res => {
-
-						console.log(res);
-
-					})
-					.catch( err => {
-
-						console.error(err);
-
-						//clearInterval(interval);
-						//asyncEnd();
-					
-					});
-
-					asyncEnd();
-				})
-				.catch( err => {
-
-					console.error(err);
-
-					//clearInterval(interval);
-					//asyncEnd();
-				
-				});
-
-			}, 1000);		
-		})
-		.catch( err => {
-			asyncEnd();
-			console.error(err);
-		});	
-	}
-
-	function addFile(fileId, base64){
-		files[fileId] = base64;
+		files[fileId] = {
+			fileName: fileName,
+			base64: base64,
+		};
 
 		console.log(files);
 	}
@@ -203,12 +216,24 @@ export default (function App(window, document, $){
 		console.log(files);
 	}
 
+	function logout(){
+		OAuth.logout();
+		profile = false;
+		hideUserProfile();
+	}
+
 	function actions(){
 
-		$uploadSendButton.on('click', function(e){
+		$DOM.sendButton.on('click', function(e){
 			e.preventDefault();
-			asyncStart();
 
+			const notEmptyFiles = files.filter( file => file.fileName );
+
+			if (notEmptyFiles.length === 0){
+				return;
+			}
+
+			asyncStart();
 			if (!profile){
 
 				OAuth.login()
@@ -234,33 +259,28 @@ export default (function App(window, document, $){
 			
 		});
 
-		// $logout.on('click', function(e){
-		// 	e.preventDefault();
-		// 	OAuth.logout();
-		// 	profile = false;
-		// 	buttonShow();
-		// 	hideUserProfile();
-		// });
-		// 
-		// 
+		$DOM.logout.on('click', function(e){
+			e.preventDefault();
+			logout();
+		});
 		
+		
+		$DOM.item.each(function(){
 
-		$uploadItem.each(function(){
+			const $item = $(this);
 
-			const $uploadItem = $(this);
+			const $uploadButton = $item.find('.js-upload-button');
+			const $uploadInput = $item.find('.js-upload-input');
+			const $uploadDelete = $item.find('.js-upload-delete');
+			const $imagePlaceholder = $item.find('.js-upload-image-placeholder');
 
-			const $uploadItemButton = $uploadItem.find('.js-upload-button');
-			const $uploadItemInput = $uploadItem.find('.js-upload-input');
-			const $uploadItemDelete = $uploadItem.find('.js-upload-delete');
-			const $imagePlaceholder = $uploadItem.find('.js-upload-image-placeholder');
+			const fileId = parseInt( $item.data('id') );
 
-			const fileId = parseInt( $uploadItem.data('id') );
-
-			$uploadItemButton.on('click', function(e){
-				$uploadItemInput.click();
+			$uploadButton.on('click', function(e){
+				$uploadInput.click();
 			});	
 
-			$uploadItemInput.on('change', function(e){
+			$uploadInput.on('change', function(e){
 
 				const input = this;
 				const file = input.files && input.files[0] ? input.files[0] : false;
@@ -282,29 +302,28 @@ export default (function App(window, document, $){
 
 		        image.onload = function(){
 		        	$imagePlaceholder.html(image);
-		        	$uploadItem.addClass('upload-item--filled');
+		        	$item.addClass('upload-item--filled');
 		        }
 
 		        reader.readAsDataURL(file);
 			});
 
-			$uploadItemDelete.on('click', function(e){
+			$uploadDelete.on('click', function(e){
 				e.preventDefault();
-				$uploadItemInput.val('');
+				$uploadInput.val('');
 				$imagePlaceholder.html('');
-				$uploadItem.removeClass('upload-item--filled');
+				$item.removeClass('upload-item--filled');
 				removeFile(fileId);
 			});
 
 		});
 
-
-
-
 	}
 
-	function init(){
-
+	function init(opts){
+		label = opts.label;
+		console.log('upload go');
+		getDOM();
 		getUser();
 		actions();
 	}

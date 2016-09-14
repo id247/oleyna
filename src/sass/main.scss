@@ -193,6 +193,13 @@
 			font-size: 80px;
 		}
 
+
+		&--middle{
+			@include sprite($sticker-2);
+			padding: 67px 20px 0;
+			font-size: 60px;
+		}
+
 		&--small{
 			@include sprite($sticker-1);
 			padding: 70px 0 0;
@@ -459,7 +466,12 @@
 
 	&__profile{
 		margin: 0 0 20px;
-		display: none;
+	}
+
+	&__result{
+		padding: 0 0 20px;
+		text-align: center;
+		font-size: 25px;
 	}
 
 	&__loader{
@@ -478,6 +490,10 @@
 
 .upload-profile{
 	text-align: center;
+
+	&__profile{	
+		display: none;
+	}
 
 	&__name{
 		margin: 0 0 10px;
@@ -566,5 +582,80 @@
 		font-size: 20px;
 		cursor: pointer;
 		display: none;
+	}
+}
+
+/* ==========================================================================
+ * user-resipes
+ * ========================================================================== */
+
+.user-resipes{
+
+	&__profile{
+		margin: 0 0 20px;
+	}
+
+	&__list{
+		
+	}
+
+	&__item{
+		margin: 0 0 50px;
+		padding: 0 0 50px;
+		border-bottom: 1px solid #ccc;
+		&--empty{
+			text-align: center;
+		}
+	}
+}
+
+.user-resipes-item{
+
+	&__profile{
+		margin: 0 0 20px;
+	}
+
+	&__avatar-placeholder{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&__avatar{
+
+	}
+
+	&__name{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&__files{
+		
+	}
+
+	&__file{
+		text-align: center;
+		margin: 0 0 15px;
+	}
+
+	&__image{
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.pagination{
+	text-align: center;
+
+	&__item{
+		display: inline-block;
+		margin:  0 5px;
+	}
+
+	&__href{
+		
+		&--active{
+
+		}
 	}
 }

@@ -25,7 +25,7 @@
 		</header> <!-- /.header -->
 
 		@@include("../common/tabs.html", {
-			"activeTab": "new"
+			"activeTab": "@@activeTab"
 		})
 
 		
@@ -190,7 +190,28 @@
 						Поздравляем! Теперь, когда Вы создали Ваш первый шедевр консервирования, поделитесь с нами результатом и выиграйте призы! Присылайте фотографию блюда, приготовленного по одному из наших рецептов, и не забудьте, что на фото должно быть отражено выполнение двух обязательных условий конкурса: использование масла «<strong>Олейна</strong>» при консервировании и участие других членов Вашей семьи в создании заготовки.
 					</p>
 
+				</div><!-- /.section__text -->				
+
+				<div class="about-competition__rules-placeholder">
+					
+					@@if (activeTab === "new"){
+					<a href="oleyna-competition-results.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
+					}
+					
+					@@if (activeTab === "advanced"){
+					<a href="oleyna-competition-results-advanced.html" class="about-competition__rules button button--yellow button--m">Посомотреть работы других участников &rarr;</a>
+					}
+
+				</div><!-- /.about-competition__rules-placeholder -->
+	
+				<div class="section__text competition__text text">
+
+					<h3>
+						Принять участие:
+					</h3>
+
 				</div><!-- /.section__text -->
+
 
 				<div class="competition__upload upload" id="upload">
 
@@ -252,6 +273,12 @@
 						</li> <!-- /.upload__item -->
 
 					</ul> <!-- /.upload__list -->
+
+					<div class="upload__result js-upload-result">
+						
+
+
+					</div><!-- /.upload__result -->
 
 					<div class="upload__button-placeholder">
 						

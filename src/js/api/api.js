@@ -93,7 +93,7 @@ function getKeysFromDB(label, page_number = 1, page_size = 30, order_by = 'date_
 	return Ajax(options);
 }
 
-function getKeysFromDBdesc(label, page_number = 1, page_size = 30){
+function getKeysFromDBdesc(label, page_number = 1, page_size = 2){
 	if (!label){
 		return paramsError('no label in API.getKeysFromDBdesc');
 	}
@@ -179,7 +179,10 @@ export default {
 	uploadImageToDB,
 	checkUpload,
 	addKeyToDB,
+	deleteKeyFromDB,
 	getKeyFromDB,
+	getKeysFromDB,
+	getKeysFromDBdesc,
 }
 
 
