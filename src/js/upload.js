@@ -4,6 +4,7 @@ import API from './api/api';
 import OAuth from './api/hello';
 import catchError from './common/catchError';
 import { PromoOptions } from 'appSettings';
+import profileDom from './profileDom';
 
 export default (function App(window, document, $){
 
@@ -13,22 +14,15 @@ export default (function App(window, document, $){
 	let files = [];
 
 	function getDOM(){
-
-
 		$DOM.container = $('#upload');
 		$DOM.item = $DOM.container.find('.js-upload-item');
 		
 		$DOM.sendButton = $DOM.container.find('.js-upload-send-button');
 
-		$DOM.profile 	= $DOM.container.find('.js-upload-profile');
-		$DOM.name 		= $DOM.container.find('.js-upload-name');
-		$DOM.logout 	= $DOM.container.find('.js-upload-logout');
+
 		$DOM.result 	= $DOM.container.find('.js-upload-result');
 		$DOM.loader 	= $DOM.container.find('.js-upload-loader');
-	
-
 	}
-
 
 	function asyncStart(){
 		console.log('go');
@@ -40,52 +34,6 @@ export default (function App(window, document, $){
 		$DOM.loader.hide();
 	}
 
-	function buttonHide(message){
-		console.log(message);
-		$DOM.result.html(message);
-	}
-
-	function buttonShow(){
-		$DOM.result.html('');
-	}
-
-
-	function checkRoles(){
-		if (
-			profile.roles.indexOf('EduStudent') === -1
-			&& 	
-			profile.roles.indexOf('EduStaff') === -1
-		){
-
-			buttonHide('Скачивание доступно только для учеников и учителей');
-			return false;
-		}
-		return true;
-	}
-
-	function flatArrays(arrays){
-		return [].concat.apply([], arrays);
-	}
-
-	function filterUniqArrayValues(array){
-		return Array.from(new Set( array ));
-	}
-
-	function getUniqValuesFromArrays(arrays){
-		return filterUniqArrayValues( flatArrays(arrays) ); // only unic
-	}
-
-
-
-	function showUserProfile(){
-		$DOM.name.html( profile.firstName + ' ' + profile.lastName);
-		$DOM.profile.show();
-	}
-
-	function hideUserProfile(){
-		$DOM.name.html('');
-		$DOM.profile.hide();
-	}
 
 	function getUser(){
 		asyncStart();
@@ -96,7 +44,7 @@ export default (function App(window, document, $){
 			profile = user;
 			asyncEnd();
 
-			showUserProfile();
+			profileDom.showUserProfile(profile);
 			
 		})
 		.catch( err => {
@@ -219,7 +167,7 @@ export default (function App(window, document, $){
 	function logout(){
 		OAuth.logout();
 		profile = false;
-		hideUserProfile();
+		profileDom.hideUserProfile();
 	}
 
 	function actions(){
@@ -259,7 +207,7 @@ export default (function App(window, document, $){
 			
 		});
 
-		$DOM.logout.on('click', function(e){
+		$(document).on('click', '.js-profile-logout', function(e){
 			e.preventDefault();
 			logout();
 		});

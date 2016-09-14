@@ -4,6 +4,8 @@ import API from './api/api';
 import OAuth from './api/hello';
 import catchError from './common/catchError';
 import { PromoOptions } from 'appSettings';
+import profileDom from './profileDom';
+
 
 export default (function App(window, document, $){
 
@@ -21,11 +23,6 @@ export default (function App(window, document, $){
 		$DOM.list = $DOM.container.find('#user-resipes-list');
 		$DOM.pagination = $DOM.container.find('#user-resipes-pagination');
 
-		$DOM.profile 			= $DOM.container.find('.js-upload-profile');
-		$DOM.name 				= $DOM.container.find('.js-upload-name');
-		$DOM.logout 			= $DOM.container.find('.js-upload-logout');
-		$DOM.loginPlaceholder 	= $DOM.container.find('.js-upload-login-placeholder');
-		$DOM.login 				= $DOM.container.find('.js-upload-login');
 		$DOM.result 			= $DOM.container.find('.js-upload-result');
 		$DOM.loader 			= $DOM.container.find('.js-upload-loader');
 	
@@ -43,23 +40,10 @@ export default (function App(window, document, $){
 		$DOM.loader.hide();
 	}
 
-	function showUserProfile(){
-		$DOM.name.html( profile.firstName + ' ' + profile.lastName);
-		$DOM.profile.show();
-		$DOM.loginPlaceholder.hide();
-	}
-
-	function hideUserProfile(){
-		$DOM.name.html('');
-		$DOM.profile.hide();
-		$DOM.loginPlaceholder.show();
-	}
-
-
 	function logout(){
 		OAuth.logout();
 		profile = false;
-		hideUserProfile();
+		profileDom.hideUserProfile();
 		$DOM.result.html('');
 	}
 
@@ -187,7 +171,7 @@ export default (function App(window, document, $){
 			profile = user;
 			asyncEnd();
 
-			showUserProfile();
+			profileDom.showUserProfile(profile);
 			getFiles();
 			
 		})
@@ -235,7 +219,7 @@ export default (function App(window, document, $){
 
 	function actions(){
 
-		$DOM.login.on('click', function(e){
+		$(document).on('click', '.js-profile-login', function(e){
 			e.preventDefault();
 
 			asyncStart();
@@ -264,7 +248,7 @@ export default (function App(window, document, $){
 			
 		});
 
-		$DOM.logout.on('click', function(e){
+		$(document).on('click', '.js-profile-logout', function(e){
 			e.preventDefault();
 			logout();
 		});

@@ -78,7 +78,7 @@ function deleteKeyFromDB(key){
 	return Ajax(options);
 }
 
-function getKeysFromDB(label, page_number = 1, page_size = 30, order_by = 'date_asc'){
+function getKeysFromDB(label, page_number = 1, page_size = 5, order_by = 'date_asc'){
 	if (!label){
 		return paramsError('no label in API.getKeysFromDB');
 	}
@@ -93,7 +93,7 @@ function getKeysFromDB(label, page_number = 1, page_size = 30, order_by = 'date_
 	return Ajax(options);
 }
 
-function getKeysFromDBdesc(label, page_number = 1, page_size = 2){
+function getKeysFromDBdesc(label, page_number = 1, page_size = 5){
 	if (!label){
 		return paramsError('no label in API.getKeysFromDBdesc');
 	}

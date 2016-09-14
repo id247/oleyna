@@ -2,6 +2,7 @@
 
 import upload from './upload';
 import results from './results';
+import profileDom from './profileDom';
 
 console.log('run');
 
@@ -9,6 +10,8 @@ $(function(){
 	const uri = document.location.href;
 	
 	let label = 'files-test-1';
+
+	profileDom.init();
 
 	switch(true){
 		case (uri.indexOf('advanced') > -1):

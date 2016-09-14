@@ -488,7 +488,7 @@
 	}
 }
 
-.upload-profile{
+.profile{
 	text-align: center;
 
 	&__profile{	
@@ -590,6 +590,7 @@
  * ========================================================================== */
 
 .user-resipes{
+	position: relative;
 
 	&__profile{
 		margin: 0 0 20px;
@@ -606,6 +607,19 @@
 		&--empty{
 			text-align: center;
 		}
+	}
+
+	&__loader{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		background: rgba(255,255,255,.5);
+		text-align: center;
+
+		display: none;
 	}
 }
 
