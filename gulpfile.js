@@ -140,6 +140,7 @@ gulp.task('html', function(callback){
 			basepath: '@file',
 			context: {
 				server: server,
+				oleynaLink: 'http://ads.adfox.ru/222314/goLink?p1=bmiys&p2=v&p5=dyevw&pr=[RANDOM]&puid1=&puid2=&puid3=&puid4=&puid5=&puid6=&puid7=&puid8=&puid9=&puid10=&puid11=&puid12=&puid13=&puid14=&puid15=&puid16=&puid17=&puid18=&puid19=',
 			},
 			indent: true
 		}))

@@ -30,6 +30,10 @@ a{
 	&:hover{
 		border-color: transparent;
 	}
+
+	&--blue{
+		color: #0072ff;
+	}
 }
 
 .inverselink{
@@ -107,7 +111,7 @@ sup{
 	}
 	
 	a{
-		color: #0072ff;
+		
 		border-bottom: 1px solid;
 		transition: all .3s;
 		&:hover{
