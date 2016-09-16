@@ -9,6 +9,7 @@
 
 	background: #ccc 50% 0 no-repeat;
 	background-size: cover;
+	//background-attachment: fixed;
 	min-height: 100vh;
 
 	&:after{
@@ -40,6 +41,10 @@
 
 	&--home-made{
 		background-image: url(../images/bg/home-made.jpg);
+	}
+
+	&--teachers{
+		background-image: url(../images/bg/teachers.jpg);
 	}
 
 	&__content{
@@ -665,6 +670,7 @@
 .user-resipes{
 	position: relative;
 	padding-top: 20px;
+	min-height: 300px;
 
 	&__profile-placeholder{
 		@include clearfix;

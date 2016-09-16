@@ -9,16 +9,16 @@ console.log('run');
 $(function(){
 	const uri = document.location.href;
 	
-	let label = 'files-test-1';
+	let label = 'oleyna-files-new';
 
 	profileDom.init();
 
 	switch(true){
 		case (uri.indexOf('advanced') > -1):
-			label = 'test-advanced';
+			label = 'oleyna-files-advanced';
 			break;
 		case (uri.indexOf('teachers') > -1):
-			label = 'test-teachers';
+			label = 'oleyna-files-teachers';
 			break;
 	}
 		
