@@ -142,6 +142,10 @@
 			width: image-width('../assets/images/ikra.png');
 			height: image-height('../assets/images/ikra.png');			
 		}
+
+		@media (max-width: 1000px){
+			display: none;
+		}
 	}
 
 	&__title{
