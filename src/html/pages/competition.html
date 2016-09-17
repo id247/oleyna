@@ -7,27 +7,11 @@
 
 	<div class="container__content">
 
-		<header class="container__section section header" id="header">
-			
-			<div class="section__wrap header__wrap">
 
-				<div class="header__logo-placeholder">
-					
-					<a href="oleyna.html" class="header__logo">Свое. Родное. Натуральное.</a>
-
-				</div><!-- /.header__logo -->
-
-				<div class="header__title-frame header__title-frame--small">
-
-					<h1 class="header__title">
-						Конкурс
-					</h1><!-- /.header__title -->
-
-				</div><!-- /.header__title-frame -->
-			
-			</div> <!-- /.header -->
-
-		</header> <!-- /.header -->
+		@@include("../common/header.html", {
+			"titleMod": "header__title-frame--small",
+			"title": "Конкурс"
+		})
 
 		@@if (activeTab !== "teachers"){
 
@@ -505,7 +489,7 @@
 							Сделать фотографии урока технологии и Ваших заготовок.
 						</li>
 						<li>
-							<a href="assets/download/paper.jpg" class="link link--blue" download>Скачать шаблон стенгазеты</a>.
+							<a href="@@paperLink" class="link link--blue" download>Скачать шаблон стенгазеты</a>.
 						</li>
 						<li>
 							Добавить в шаблон фотографии и текст.

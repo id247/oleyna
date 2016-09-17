@@ -2,29 +2,10 @@
 
 	<div class="container__content">
 
-		<header class="container__section section header" id="header">
-			
-			<div class="section__wrap header__wrap">
-
-				<div class="header__logo-placeholder">
-					
-					<a href="oleyna.html" class="header__logo">Свое. Родное. Натуральное.</a>
-
-				</div><!-- /.header__logo -->
-
-				<div class="header__title-frame header__title-frame--big">
-
-					<h1 class="header__title">
-						Готовим
-						с&nbsp;семьей
-					</h1><!-- /.header__title -->
-
-				</div><!-- /.header__title-frame -->
-			
-			</div> <!-- /.header -->
-
-		</header> <!-- /.header -->
-
+		@@include("../common/header.html", {
+			"titleMod": "header__title-frame--big",
+			"title": "Готовим с&nbsp;семьей"
+		})
 
 		<section class="container__section section about-competition" id="about-competition">
 			

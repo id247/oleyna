@@ -2,28 +2,10 @@
 
 	<div class="container__content">
 
-		<header class="container__section section header" id="header">
-			
-			<div class="section__wrap header__wrap">
-
-				<div class="header__logo-placeholder">
-					
-					<a href="oleyna.html" class="header__logo">Свое. Родное. Натуральное.</a>
-
-				</div><!-- /.header__logo -->
-
-				<div class="header__title-frame header__title-frame--big">
-
-					<div class="header__title">
-						Домашнее 
-						вкуснее
-					</div><!-- /.header__title -->
-
-				</div><!-- /.header__title-frame -->
-			
-			</div> <!-- /.header -->
-
-		</header> <!-- /.header -->
+		@@include("../common/header.html", {
+			"titleMod": "header__title-frame--big",
+			"title": "Домашнее вкуснее"
+		})
 
 
 		<section class="container__section section page" id="page">

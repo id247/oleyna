@@ -103,7 +103,10 @@ export default (function App(window, document, $){
 
 			const value = {
 				user: profile,
-				files: filesData,
+				files: filesData.map(fileData => ({
+					downloadUrl: fileData.downloadUrl,
+					id: fileData.id,
+				})),
 			}
 
 			const data = {
@@ -112,6 +115,8 @@ export default (function App(window, document, $){
 				value: encodeURIComponent(JSON.stringify(value)),
 				permissionLevel: 'Public',
 			}
+
+			console.log(data);
 
 			return API.addKeyToDB(data);
 		})

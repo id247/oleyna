@@ -16,6 +16,25 @@ export default (function App(window, document, $){
 	let pageNumber = 1;
 	let pageSize = 5;
 
+	if (document.location.href.indexOf('page=') > -1){
+		const temp = parseInt(getParameterByName('page'));
+		console.log(temp);
+		if (temp && Number.isInteger(temp)){
+			pageNumber = parseInt(temp);
+		}
+		
+	}
+
+	function getParameterByName(name, url) {
+	    if (!url) url = window.location.href;
+	    name = name.replace(/[\[\]]/g, '\\$&');
+	    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	}
+
 
 	function getDOM(){
 
@@ -57,7 +76,7 @@ export default (function App(window, document, $){
 
 		if (!keys || keys.length === 0){
 			$DOM.list.html(`
-				<div class="user-resipes__item user-resipes__item--empty">
+				<div class='user-resipes__item user-resipes__item--empty'>
 					Пока нет ни одной работы.
 				</div>
 			`);
@@ -73,8 +92,8 @@ export default (function App(window, document, $){
 
 			if (profile.roles.indexOf('System') > -1){
 				deleteButton = (`
-					<div class="user-resipes-item__admin">
-						<a href="#${key.Key}" class="link js-delete">Удалить</a>
+					<div class='user-resipes-item__admin'>
+						<a href='#${key.Key}' class='link js-delete'>Удалить</a>
 					</div>
 				`);
 			}
@@ -109,26 +128,31 @@ export default (function App(window, document, $){
 
 
 			const files = value.files.reduce( (oldHtml, file) => {
+				const thumbnail = file.downloadUrl.replace(/\.(jpg|jpeg|png|gif)$/, '.s.$1');
+				console.log(file);
+				console.log(thumbnail);
 				return oldHtml + (`
-					<div class="user-resipes-item__file">
-						<img src="${file.downloadUrl}" alt="" class="user-resipes-item__image" />
+					<div class='user-resipes-item__file'>
+						<a href='${file.downloadUrl}' target='_blank'>
+							<img src='${thumbnail}' alt=' class='user-resipes-item__image' />
+						</a>
 					</div>
 				`);
 			}, '');
 
 			return oldHtml + (`
-				<div class="user-resipes__item user-resipes-item">
-					<div class="user-resipes-item__profile">
-						<div class="user-resipes-item__avatar-placeholder">
-							<img src="${value.user.photoMedium}" alt="" class="user-resipes-item__avatar" />
+				<div class='user-resipes__item user-resipes-item'>
+					<div class='user-resipes-item__profile'>
+						<div class='user-resipes-item__avatar-placeholder'>
+							<img src='${value.user.photoMedium}' alt=' class='user-resipes-item__avatar' />
 						</div>
-						<div class="user-resipes-item__name">
-							<a href="${profileLink}" class="user-resipes-item__profile-link link" target="_blank">
+						<div class='user-resipes-item__name'>
+							<a href='${profileLink}' class='user-resipes-item__profile-link link' target='_blank'>
 								${value.user.fullName}
 							</a>
 						</div>
 					</div>
-					<div class="user-resipes-item__files">
+					<div class='user-resipes-item__files'>
 						${files}
 					</div>
 					${deleteButton}
@@ -157,8 +181,8 @@ export default (function App(window, document, $){
 
 		for (let i = 1; i <= pagesCount ; i++){
 			html += (`
-				<div class="pagination__item">
-					<a href="#${i}" class="js-pagination-href pagination__href ${(i === pageNumber ? 'pagination__href--active' : 'link')}">${i}</a>
+				<div class='pagination__item'>
+					<a href='?page=${i}' class='js-pagination-href pagination__href ${(i === pageNumber ? 'pagination__href--active' : 'link')}'>${i}</a>
 				</div>
 			`);
 		}
@@ -260,9 +284,9 @@ export default (function App(window, document, $){
 		});
 
 		$(document).on('click', '.js-pagination-href', function(e){
-			e.preventDefault();
-			pageNumber = parseInt ($(this).attr('href').substr(1) );
-			getFiles();
+			//e.preventDefault();
+			//pageNumber = parseInt ($(this).attr('href').substr(1) );
+			//getFiles();
 		});
 
 
