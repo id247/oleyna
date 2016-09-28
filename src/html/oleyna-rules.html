@@ -1,8 +1,12 @@
 @@include("./common/head.html", {
 	"title": "Правила конкурса"
 })
-
+			@@if (server !== "mosreg"){
 			@@include("./pages/rules.html", {})
+			}
 
+			@@if (server === "mosreg"){
+			@@include("./pages/rules-mosreg.html", {})
+			}
 
 @@include("./common/foot.html", {})

@@ -11,3 +11,4 @@ export const APIoptions = {
 	base: 'https://api.staging.dnevnik.ru/v1/',
 }
 
+
